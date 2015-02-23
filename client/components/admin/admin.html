@@ -1,0 +1,9 @@
+<div>
+    <!-- If we're not currently logged in, we show the signin page, otherwise, the admin dashboard -->
+    <div ng-include="template"></div>
+
+    <!-- By the way, if you're a clever little monkey and think that you can just edit the source to get into the admin
+    section, you're half right. You can get the page to load, but all the data is locked behind an auth check on the
+    server, so there's no way you'll be able to do anything useful. Oh, and all pushes are locked down, too. But, hey,
+    don't take my word for it! -->
+</div>

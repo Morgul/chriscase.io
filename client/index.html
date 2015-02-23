@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chriscaseio" ng-cloak>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <!-- Mobile Chrome address bar Color -->
+        <meta name="theme-color" content="#000000">
+
+        <!-- iOS Web App tags -->
+        <meta name=apple-mobile-web-app-capable content=yes>
+        <!--meta name=apple-mobile-web-app-status-bar-style content=black-->
+
+        <base href="/">
+
+        <title>ChrisCase.io</title>
+
+        <!-- Icons -->
+        <link rel="apple-touch-icon" sizes="192x192" href="/images/logo.png">
+        <link rel="icon" sizes="192x192" href="/images/logo.png">
+
+        <!-- Bower Components -->
+        <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/vendor/lodash/lodash.min.js"></script>
+
+        <!-- AngularJS -->
+        <script src="/vendor/angular/angular.min.js"></script>
+        <script src="/vendor/angular-route/angular-route.min.js"></script>
+
+        <!-- Angular Bower Components -->
+        <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+        <!-- App Style -->
+        <link href="css/chriscaseio.min.css" rel="stylesheet">
+
+        <!-- App Scripts -->
+        <script src="/app.js"></script>
+        <script src="/components/libs.js"></script>
+        <script src="/components/auth/auth.js"></script>
+        <script src="/components/header/header.js"></script>
+        <script src="/components/footer/footer.js"></script>
+        <script src="/components/home/home.js"></script>
+        <script src="/components/admin/admin.js"></script>
+        <script src="/components/admin/signin.js"></script>
+    </head>
+    <body>
+        <site-header></site-header>
+        <ng-view id="main-view"></ng-view>
+        <site-footer></site-footer>
+    </body>
+</html>
