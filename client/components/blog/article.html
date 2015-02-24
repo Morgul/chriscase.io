@@ -1,0 +1,12 @@
+<div id="article" class="container">
+    <h1>
+        {{ article.title }}
+        <br>
+        <small>{{ article.subtitle }}</small>
+    </h1>
+    <hr>
+    <span class="pull-right">{{ article.created | date:'short' }}</span>
+    by <a href="/about">Chris Case</a>
+    <hr>
+    <markdown class="content" src="article.content"></markdown>
+</div>

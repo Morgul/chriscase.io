@@ -33,6 +33,7 @@ var localAuth = require('./server/auth/local');
 // Routers
 var routeUtils = require('./server/routes/utils');
 var adminRouter = require('./server/routes/admin');
+var blogRouter = require('./server/routes/blog');
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -65,6 +66,7 @@ app.use(express.static(path.resolve('./client')));
 
 // Set up our application routes
 app.use('/admin', adminRouter);
+app.use('/blog', blogRouter);
 
 // Serve index.html
 app.get('/', routeUtils.serveIndex);

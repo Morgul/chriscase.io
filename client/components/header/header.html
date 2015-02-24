@@ -11,19 +11,24 @@
         </div>
         <div class="navbar-collapse collapse" collapse="isCollapsed">
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: location == 'Example' }">
-                    <a href="/builder">
-                        <i class="fa fa-fighter-jet"></i> Example
+                <li ng-class="{ active: location == 'blog' }">
+                    <a href="/blog">
+                        <i class="fa fa-pencil-square-o"></i> Blog
+                    </a>
+                </li>
+                <li ng-class="{ active: location == 'about' }">
+                    <a href="/about">
+                        <i class="fa fa-question"></i> About Me
                     </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul ng-if="authorized" class="nav navbar-nav navbar-right">
                 <li class="divider"></li>
-                <li ng-if="authorized">
+                <li>
                     <p class="navbar-text text-center"><small>Signed in as {{ user.display }}</small></p>
                 </li>
                 <li class="divider"></li>
-                <li ng-if="authorized">
+                <li>
                     <button type="button" class="btn btn-link navbar-btn btn-block" ng-click="signOut()">
                         <i class="fa fa-sign-out"></i> Sign out
                     </button>

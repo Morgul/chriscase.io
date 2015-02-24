@@ -9,6 +9,7 @@ angular.module('chriscaseio', [
 
         'lodash',
         'ui.bootstrap',
+        'truncate',
 
         'chriscaseio.services',
         'chriscaseio.controllers',
@@ -22,6 +23,8 @@ angular.module('chriscaseio', [
         $routeProvider
             .when('/', { templateUrl: '/components/home/home.html', controller: 'HomeController' })
             .when('/admin', { templateUrl: '/components/admin/admin.html', controller: 'AdminController' })
+            .when('/blog', { templateUrl: '/components/blog/article_list.html', controller: 'ArticleListController' })
+            .when('/blog/:slug*', { templateUrl: '/components/blog/article.html', controller: 'ArticleController' })
             .otherwise({redirectTo: '/'});
     }]);
 

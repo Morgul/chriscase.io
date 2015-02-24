@@ -1,0 +1,33 @@
+<div id="article-list" class="container">
+    <h2 style="margin-bottom: 0;">Articles</h2>
+    <hr style="margin-top: 5px;">
+
+    <!-- List of articles -->
+    <div class="article-list">
+        <article ng-repeat="article in articles">
+            <header>
+                <div class="pull-right text-right">
+                    <small>{{ article.created | date:'MM/dd/yy' }}</small>
+                </div>
+                <h2>
+                    <a href="/blog/{{ article.slug }}">{{ article.title }}</a>
+                    <small>{{ article.subtitle }}</small>
+                </h2>
+            </header>
+
+            <markdown class="content" src="article.content | characters:800"></markdown>
+
+            <div class="text-right">
+                <a href="/blog/{{ article.slug }}">Read More</a>
+            </div>
+
+            <hr>
+        </article>
+    </div>
+
+    <!-- Pagination -->
+    <pager total-items="totalArticles" items-per-page="count" ng-model="currentPage" previous-text="« Newer Articles" next-text="Older Articles »"></pager>
+
+    <!-- Placeholder if no blog posts -->
+    <h4 ng-if="!articles || articles.length == 0" class="text-center">No blog posts found.</h4>
+</div>
