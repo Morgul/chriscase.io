@@ -4,18 +4,26 @@
 // @module add_edit.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function AddEditArticleController($scope, $routeParams, $location, articleSvc)
+function AddEditArticleController($scope, $routeParams, $location, authSvc, articleSvc)
 {
     $scope.article = {};
 
-    if($routeParams.slug)
-    {
-        articleSvc.get($routeParams.slug)
-            .then(function(article)
+    authSvc.initialized
+        .then(function()
+        {
+            if(!authSvc.authorized)
             {
-                $scope.article = article;
-            });
-    } // end if
+                $location.path('/admin');
+            }
+            else if($routeParams.slug)
+            {
+                articleSvc.get($routeParams.slug)
+                    .then(function(article)
+                    {
+                        $scope.article = article;
+                    });
+            } // end if
+        });
 
     // -----------------------------------------------------------------------------------------------------------------
     // Functions
@@ -73,6 +81,7 @@ angular.module('chriscaseio.controllers').controller('AddEditArticleController',
     '$scope',
     '$routeParams',
     '$location',
+    'AuthService',
     'ArticleService',
     AddEditArticleController
 ]);
