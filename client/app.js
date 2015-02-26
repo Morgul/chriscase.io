@@ -22,6 +22,8 @@ angular.module('chriscaseio', [
 
         $routeProvider
             .when('/', { templateUrl: '/components/home/home.html', controller: 'HomeController' })
+            .when('/about', { templateUrl: '/components/about/about.html', controller: 'AboutController' })
+            .when('/contact', { templateUrl: '/components/contact/contact.html', controller: 'ContactController' })
             .when('/blog', { templateUrl: '/components/blog/article_list.html', controller: 'ArticleListController' })
             .when('/blog/:slug*', { templateUrl: '/components/blog/article.html', controller: 'ArticleController' })
             .when('/admin', { templateUrl: '/components/admin/admin.html', controller: 'AdminController' })

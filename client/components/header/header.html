@@ -21,6 +21,11 @@
                         <i class="fa fa-question"></i> About Me
                     </a>
                 </li>
+                <li ng-class="{ active: location == 'contact' }">
+                    <a href="/contact">
+                        <i class="fa fa-envelope-o"></i> Contact
+                    </a>
+                </li>
             </ul>
             <ul ng-if="authorized" class="nav navbar-nav navbar-right">
                 <li class="divider"></li>
