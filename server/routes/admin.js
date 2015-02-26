@@ -29,7 +29,7 @@ router.use(routeUtils.errorLogger(logger));
 // REST Endpoints
 //----------------------------------------------------------------------------------------------------------------------
 
-router.get('/', function(req, resp)
+router.get('/*', function(req, resp)
 {
     routeUtils.interceptHTML(resp, function()
     {
