@@ -7,7 +7,7 @@ module.exports = function(grunt)
     // Project configuration.
     grunt.initConfig({
         project: {
-            less: ['client/less/**/*.less', 'client/components/**/*.less', '!client/less/bootswatch.less']
+            less: ['client/less/theme.less', 'client/components/**/*.less']
         },
         less: {
             min: {
