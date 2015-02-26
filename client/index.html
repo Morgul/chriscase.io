@@ -25,7 +25,10 @@
         <script src="/vendor/lodash/lodash.min.js"></script>
         <script src="/vendor/marked/marked.min.js"></script>
         <script src="/vendor/highlightjs/highlight.pack.js"></script>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow.min.css">
+
+        <!-- This is the tomorrow theme for highlightjs. The themes aren't published on bower. Instead, we have to pull
+        down just this file from github, and bower renames all files to `index.*`, which is annoying. -->
+        <link rel="stylesheet" href="/vendor/tomorrow/index.css">
 
         <!-- AngularJS -->
         <script src="/vendor/angular/angular.min.js"></script>
