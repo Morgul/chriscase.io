@@ -60,10 +60,41 @@ function ArticleServiceFactory(Promise, $http, $cacheFactory, _)
         });
     }; // end get
 
-    ArticleService.prototype.set = function(article)
+    ArticleService.prototype.save = function(article)
     {
-        //TODO: make this do stuff!
-    }; // end set
+        var self = this;
+        return Promise(function(resolve, reject)
+        {
+            $http.put('/blog/' + article.slug, article)
+                .success(function(article)
+                {
+                    self.cache.put(article.slug, article);
+                    resolve(article);
+                })
+                .error(function(data)
+                {
+                    reject(data);
+                });
+        });
+    }; // end save
+
+    ArticleService.prototype.delete = function(slug)
+    {
+        var self = this;
+        return Promise(function(resolve, reject)
+        {
+            $http.delete('/blog/' + slug)
+                .success(function(article)
+                {
+                    self.cache.remove(slug);
+                    resolve(article);
+                })
+                .error(function(data)
+                {
+                    reject(data);
+                });
+        });
+    }; // end delete
 
     return new ArticleService();
 } // end ArticleServiceFactory

@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 ng-if="article.slug"><i class="fa fa-edit"></i> Edit Blog Article</h1>
+    <h1 ng-if="!article.slug"><i class="fa fa-plus"></i> Add Blog Article</h1>
+    <hr>
+    <form>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" class="form-control" placeholder="Title" ng-model="article.title">
+        </div>
+        <div class="form-group">
+            <label for="subtitle">Subtitle</label>
+            <input id="subtitle" type="text" class="form-control" placeholder="Subtitle" ng-model="article.subtitle">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea id="content" class="form-control" ng-model="article.content" rows="20"></textarea>
+        </div>
+        <div class="btn-toolbar">
+            <button ng-if="article.slug" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</button>
+            <div class="btn-group pull-right">
+                <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i> Save</button>
+                <button ng-if="!article.published" class="btn btn-success" ng-click="publish()"><i class="fa fa-rotate-90 fa-sign-in"></i> Publish</button>
+                <button ng-if="article.published" class="btn btn-warning" ng-click="unpublish()"><i class="fa fa-rotate-270 fa-sign-out"></i> Unpublish</button>
+                <button class="btn btn-default" ng-click="cancel()"><i class="fa fa-undo"></i> Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

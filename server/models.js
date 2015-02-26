@@ -13,6 +13,18 @@ var db = { errors: jbase.errors };
 var rootPath = path.join(__dirname, 'db');
 
 //----------------------------------------------------------------------------------------------------------------------
+
+function slugify(article)
+{
+    return article.title.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+} // end slugify
+
+//----------------------------------------------------------------------------------------------------------------------
 // Models
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -30,9 +42,10 @@ db.Article = jbase.defineModel('articles', {
     slug: String,
     content: String,
     author: String,
+    published: { type: Boolean, default: false },
     created: { type: Date, default: Date.now() },
     updated: { type: Date, default: Date.now() }
-}, { rootPath: rootPath, pk: 'slug' });
+}, { rootPath: rootPath, pk: 'slug', idFunc: slugify });
 
 db.User = jbase.defineModel('users', {
     username: String,

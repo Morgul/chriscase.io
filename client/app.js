@@ -22,9 +22,11 @@ angular.module('chriscaseio', [
 
         $routeProvider
             .when('/', { templateUrl: '/components/home/home.html', controller: 'HomeController' })
-            .when('/admin', { templateUrl: '/components/admin/admin.html', controller: 'AdminController' })
             .when('/blog', { templateUrl: '/components/blog/article_list.html', controller: 'ArticleListController' })
             .when('/blog/:slug*', { templateUrl: '/components/blog/article.html', controller: 'ArticleController' })
+            .when('/admin', { templateUrl: '/components/admin/admin.html', controller: 'AdminController' })
+            .when('/admin/blog', { templateUrl: '/components/admin/blog/add_edit.html', controller: 'AddEditArticleController' })
+            .when('/admin/blog/:slug*', { templateUrl: '/components/admin/blog/add_edit.html', controller: 'AddEditArticleController' })
             .otherwise({redirectTo: '/'});
     }]);
 

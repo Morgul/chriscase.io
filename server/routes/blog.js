@@ -50,6 +50,25 @@ router.get('/', function(req, resp)
                 var start = (page * perPage) - perPage;
                 var end = (page * perPage);
 
+                // Handle the 'get all' condition
+                if(perPage < 0)
+                {
+                    start = 0;
+                    end = articles.length;
+                }
+                else
+                {
+                    articles = _.reduce(articles, function(results, article)
+                    {
+                        if(article.published)
+                        {
+                            results.push(article);
+                        } // end if
+
+                        return results;
+                    }, []);
+                } // end if
+
                 return {
                     total: articles.length,
                     articles: articles.slice(start, end)
@@ -79,6 +98,50 @@ router.get('/*', function(req, resp)
                 resp.status(404).end();
             });
     });
+});
+
+router.put('/*', function(req, resp)
+{
+    // Get wildcard parameter
+    var slug = req.params[0];
+
+    if(req.isAuthenticated())
+    {
+        models.Article.get(slug)
+            .then(function(article)
+            {
+                _.assign(article, req.body);
+                return article.save();
+            })
+            .catch(models.errors.DocumentNotFound, function()
+            {
+                var article = new models.Article(req.body);
+                return article.save();
+            })
+            .then(function(article)
+            {
+                resp.json(article);
+            });
+    } // end if
+});
+
+router.delete('/*', function(req, resp)
+{
+    // Get wildcard parameter
+    var slug = req.params[0];
+
+    if(req.isAuthenticated())
+    {
+        models.Article.remove(slug)
+            .then(function()
+            {
+                resp.end();
+            })
+            .catch(models.errors.DocumentNotFound, function()
+            {
+                resp.status(404).end();
+            });
+    } // end if
 });
 
 //----------------------------------------------------------------------------------------------------------------------

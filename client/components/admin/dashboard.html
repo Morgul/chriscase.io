@@ -1,3 +1,20 @@
-<div class="container">
-    <h4 class="text-center">Dashboard goes here.</h4>
+<div class="container" ng-controller="DashboardController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a class="pull-right" ng-click="addArticle()"><i class="fa fa-plus"></i> Add Article</a>
+            <h1 class="panel-title">Blog Articles</h1>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="article in articles">
+                <div class="btn-toolbar pull-right">
+                    <button class="btn btn-danger" ng-click="deleteArticle(article.slug)"><i class="fa fa-trash-o"></i> Delete</button>
+                    <button class="btn btn-primary" ng-click="editArticle(article.slug)"><i class="fa fa-edit"></i> Edit</button>
+                    <button ng-if="!article.published" class="btn btn-success" ng-click="publishArticle(article)"><i class="fa fa-rotate-90 fa-sign-in"></i> Publish</button>
+                    <button ng-if="article.published" class="btn btn-warning" ng-click="unpublishArticle(article)"><i class="fa fa-rotate-270 fa-sign-out"></i> Unpublish</button>
+                </div>
+                <h4 class="list-group-item-heading">{{ article.title }}</h4>
+                <p class="list-group-item-text text-muted">{{ article.subtitle }}</p>
+            </li>
+        </ul>
+    </div>
 </div>
