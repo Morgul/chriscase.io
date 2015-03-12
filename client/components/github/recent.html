@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-github"></i> Recent GitHub Activity</h4>
+    </div>
+    <div ng-if="events && events.length > 0"  class="list-group">
+        <a href="{{ repoURL(event.repo.url) }}" class="list-group-item" ng-repeat="event in events">
+            <div class="pull-right"><small>{{ event.created_at | fuzzydate }}</small></div>
+            <div class="list-group-item-heading">
+                <i class="fa {{ eventIcon(event.type) }}"></i> <span ng-bind-html="eventText(event)"></span>
+                <br>
+                <small class="text-muted">{{ event.repo.name }}</small>
+            </div>
+        </a>
+    </div>
+    <div ng-if="!events || events.length == 0"  class="panel-body">
+        <h4 class="text-center">No recent activity</h4>
+    </div>
+</div>
