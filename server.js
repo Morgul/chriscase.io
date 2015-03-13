@@ -32,8 +32,10 @@ var localAuth = require('./server/auth/local');
 
 // Routers
 var routeUtils = require('./server/routes/utils');
+var aboutRouter = require('./server/routes/about');
 var adminRouter = require('./server/routes/admin');
 var blogRouter = require('./server/routes/blog');
+var contactRouter = require('./server/routes/contact');
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -65,8 +67,10 @@ localAuth.initialize(app);
 app.use(express.static(path.resolve('./client')));
 
 // Set up our application routes
+app.use('/about', aboutRouter);
 app.use('/admin', adminRouter);
 app.use('/blog', blogRouter);
+app.use('/contact', contactRouter);
 
 // Serve index.html
 app.get('/', routeUtils.serveIndex);

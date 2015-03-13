@@ -1,13 +1,14 @@
 //----------------------------------------------------------------------------------------------------------------------
-// Routes for admin activity
+// Routes for contact page
 //
-// @module admin.js
+// @module contact.js
 //----------------------------------------------------------------------------------------------------------------------
 
 var _ = require('lodash');
 var express = require('express');
 
 var routeUtils = require('./utils');
+var models = require('../models');
 
 var logger = require('omega-logger').loggerFor(module);
 
@@ -31,10 +32,7 @@ router.use(routeUtils.errorLogger(logger));
 
 router.get('/*', function(req, resp)
 {
-    routeUtils.interceptHTML(resp, function()
-    {
-        resp.json({ message: 'Hello, world!' });
-    });
+    routeUtils.serveIndex(req, resp);
 });
 
 //----------------------------------------------------------------------------------------------------------------------
