@@ -10,6 +10,7 @@ angular.module('chriscaseio', [
         'lodash',
         'ui.bootstrap',
         'truncate',
+        'angularUtils.directives.dirDisqus',
 
         'chriscaseio.services',
         'chriscaseio.controllers',

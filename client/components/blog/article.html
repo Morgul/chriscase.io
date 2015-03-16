@@ -4,9 +4,18 @@
         <br>
         <small>{{ article.subtitle }}</small>
     </h1>
+
+    <!-- Byline -->
     <hr>
     <span class="pull-right">{{ article.created | date:'short' }}</span>
     by <a href="/about">Chris Case</a>
     <hr>
+
+    <!-- Body -->
     <markdown class="content" src="article.content"></markdown>
+    <hr>
+    <dir-disqus disqus-shortname="chriscaseio"
+                disqus-url="http://chriscase.io"
+                disqus-identifier="{{ article.slug }}">
+    </dir-disqus>
 </div>
