@@ -111,11 +111,13 @@ router.put('/*', function(req, resp)
             .then(function(article)
             {
                 _.assign(article, req.body);
+                article.updated = Date.now();
                 return article.save();
             })
             .catch(models.errors.DocumentNotFound, function()
             {
                 var article = new models.Article(req.body);
+                article.created = Date.now();
                 return article.save();
             })
             .then(function(article)
