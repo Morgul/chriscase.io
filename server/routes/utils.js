@@ -48,7 +48,7 @@ function interceptHTML(response, jsonHandler)
 //----------------------------------------------------------------------------------------------------------------------
 
 module.exports = {
-    requestLogger: buildBasicErrorLogger,
+    requestLogger: buildBasicRequestLogger,
     errorLogger: buildBasicErrorLogger,
     interceptHTML: interceptHTML,
     serveIndex: serveIndex
