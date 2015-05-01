@@ -4,7 +4,7 @@
 // @module header.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function SiteHeaderFactory($route, authSvc)
+function SiteHeaderFactory($route, $location, authSvc)
 {
     function SiteHeaderController($scope, $location)
     {
@@ -21,6 +21,11 @@ function SiteHeaderFactory($route, authSvc)
         {
             $scope.location = $location.path().substr(1).split('/')[0];
         });
+
+        $scope.admin = function()
+        {
+            $location.path('/admin');
+        }; // end admin
 
         $scope.signOut = function()
         {
@@ -45,6 +50,7 @@ function SiteHeaderFactory($route, authSvc)
 
 angular.module('chriscaseio.directives').directive('siteHeader', [
     '$route',
+    '$location',
     'AuthService',
     SiteHeaderFactory
 ]);

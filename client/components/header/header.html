@@ -37,7 +37,9 @@
             <ul ng-if="authorized" class="nav navbar-nav navbar-right">
                 <li class="divider"></li>
                 <li>
-                    <p class="navbar-text text-center"><small>Signed in as {{ user.display }}</small></p>
+                    <button type="button" class="btn btn-link navbar-btn btn-block" ng-click="admin()">
+                        <i class="fa fa-gears"></i> Admin
+                    </button>
                 </li>
                 <li class="divider"></li>
                 <li>
