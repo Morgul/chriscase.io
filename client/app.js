@@ -11,6 +11,7 @@ angular.module('chriscaseio', [
         'ui.ace',
         'ui.bootstrap',
         'truncate',
+        'ngToast',
         'angularFileUpload',
         'angularUtils.directives.dirDisqus',
 
@@ -46,6 +47,14 @@ angular.module('chriscaseio', [
             highlight: function (code, lang) {
                 return hljs.highlightAuto(code, [lang]).value;
             }
+        });
+    }])
+    .config(['ngToastProvider', function(ngToast)
+    {
+        ngToast.configure({
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left',
+            maxNumber: 3
         });
     }]);
 

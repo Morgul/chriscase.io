@@ -4,7 +4,7 @@
 // @module dashboard.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function DashboardController($scope, $location, $modal, articleSvc)
+function DashboardController($scope, $location, $modal, ngToast, articleSvc)
 {
     articleSvc.listArticles(0, -1)
         .then(function(data)
@@ -29,7 +29,7 @@ function DashboardController($scope, $location, $modal, articleSvc)
         articleSvc.save(article)
             .then(function()
             {
-                $location.path('/admin');
+                ngToast.create("Post published.");
             });
     }; // end publish
 
@@ -40,7 +40,7 @@ function DashboardController($scope, $location, $modal, articleSvc)
         articleSvc.save(article)
             .then(function()
             {
-                $location.path('/admin');
+                ngToast.create("Post unpublished.");
             });
     }; // end unpublish
 
@@ -56,6 +56,8 @@ function DashboardController($scope, $location, $modal, articleSvc)
             articleSvc.delete(slug)
                 .then(function()
                 {
+                    ngToast.create("Post deleted.");
+
                     return articleSvc.listArticles(0, -1)
                         .then(function(data)
                         {
@@ -72,6 +74,7 @@ angular.module('chriscaseio.controllers').controller('DashboardController', [
     '$scope',
     '$location',
     '$modal',
+    'ngToast',
     'ArticleService',
     DashboardController
 ]);

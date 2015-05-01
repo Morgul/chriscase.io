@@ -34,6 +34,7 @@
         <!-- AngularJS -->
         <script src="/vendor/angular/angular.min.js"></script>
         <script src="/vendor/angular-route/angular-route.min.js"></script>
+        <script src="/vendor/angular-sanitize/angular-sanitize.min.js"></script>
 
         <!-- Angular Bower Components -->
         <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -41,9 +42,12 @@
         <script src="/vendor/angular-utils-disqus/dirDisqus.js"></script>
         <script src="/vendor/angular-ui-ace/ui-ace.min.js"></script>
         <script src="/vendor/angular-file-upload/angular-file-upload.min.js"></script>
+        <script src="/vendor/ngtoast/dist/ngToast.min.js"></script>
+        <link href="/vendor/ngtoast/dist/ngToast.min.css" rel="stylesheet">
+        <link href="/vendor/ngtoast/dist/ngToast-animations.min.css" rel="stylesheet">
 
         <!-- App Style -->
-        <link href="css/chriscaseio.min.css" rel="stylesheet">
+        <link href="/css/chriscaseio.min.css" rel="stylesheet">
 
         <!-- App Scripts -->
         <script src="/app.js"></script>
@@ -69,5 +73,8 @@
         <site-header></site-header>
         <ng-view id="main-view"></ng-view>
         <site-footer></site-footer>
+
+        <!-- element for ngToast -->
+        <toast></toast>
     </body>
 </html>

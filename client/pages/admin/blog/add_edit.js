@@ -4,7 +4,7 @@
 // @module add_edit.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function AddEditArticleController($scope, $routeParams, $location, FileUploader, authSvc, articleSvc)
+function AddEditArticleController($scope, $routeParams, $location, FileUploader, ngToast, authSvc, articleSvc)
 {
     $scope.article = {};
 
@@ -17,6 +17,10 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         {
             var imageMarkdown = "![Image: '" + response.originalName + "'](" + response.url + " \"" + response.originalName + "\")";
             $scope.editor.insert(imageMarkdown);
+        },
+        onCompleteAll: function()
+        {
+            ngToast.create("Image successfully uploaded.");
         }
     });
 
@@ -63,7 +67,7 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         articleSvc.save($scope.article)
             .then(function()
             {
-                $location.path('/admin');
+                ngToast.create("Post published.");
             });
     }; // end publish
 
@@ -74,7 +78,7 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         articleSvc.save($scope.article)
             .then(function()
             {
-                $location.path('/admin');
+                ngToast.create("Post unpublished.");
             });
     }; // end unpublish
 
@@ -83,7 +87,7 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         articleSvc.save($scope.article)
             .then(function()
             {
-                $location.path('/admin');
+                ngToast.create("Post saved.");
             });
     }; // end save
 
@@ -92,11 +96,12 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         articleSvc.delete($routeParams.slug)
             .then(function()
             {
+                ngToast.create("Post deleted.");
                 $location.path('/admin');
             });
     }; // end delete
 
-    $scope.cancel = function()
+    $scope.back = function()
     {
         $location.path('/admin');
     }; // end cancel
@@ -109,6 +114,7 @@ angular.module('chriscaseio.controllers').controller('AddEditArticleController',
     '$routeParams',
     '$location',
     'FileUploader',
+    'ngToast',
     'AuthService',
     'ArticleService',
     AddEditArticleController
