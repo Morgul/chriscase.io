@@ -6,7 +6,7 @@
     <div class="article-list">
         <article ng-repeat="article in articles">
             <header>
-                <div class="pull-right text-right">
+                <div class="pull-right text-right text-muted">
                     <small>{{ article.created | date:'MM/dd/yy' }}</small>
                 </div>
                 <h2>
@@ -14,12 +14,6 @@
                     <small>{{ article.subtitle }}</small>
                 </h2>
             </header>
-
-            <markdown class="content" src="article.content | characters:800"></markdown>
-
-            <div class="text-right">
-                <a href="/blog/{{ article.slug }}">Read More</a>
-            </div>
 
             <hr>
         </article>
