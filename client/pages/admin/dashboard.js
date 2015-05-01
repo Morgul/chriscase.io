@@ -47,7 +47,7 @@ function DashboardController($scope, $location, $modal, articleSvc)
     $scope.deleteArticle = function(slug)
     {
         var modalInstance = $modal.open({
-            templateUrl: '/components/admin/blog/delete.html',
+            templateUrl: '/pages/admin/blog/delete.html',
             size: 'lg'
         });
 

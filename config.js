@@ -8,7 +8,7 @@
 
 module.exports = {
     // General configuration
-    port: 4545,
+    port: 4567,
 
     // Google Authentication
     googleClientID: "",

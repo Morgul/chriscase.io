@@ -6,7 +6,7 @@
 
 function AdminController($scope, authSvc)
 {
-    $scope.template = '/components/admin/signin.html';
+    $scope.template = '/pages/admin/signin.html';
 
     // Wait for the authSvc to initialize, then reload
     authSvc.initialized
@@ -14,7 +14,7 @@ function AdminController($scope, authSvc)
         {
             if(authSvc.authorized)
             {
-                $scope.template = '/components/admin/dashboard.html';
+                $scope.template = '/pages/admin/dashboard.html';
             } // end if
         });
 
