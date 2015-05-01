@@ -11,6 +11,7 @@ angular.module('chriscaseio', [
         'ui.ace',
         'ui.bootstrap',
         'truncate',
+        'angularFileUpload',
         'angularUtils.directives.dirDisqus',
 
         'chriscaseio.services',

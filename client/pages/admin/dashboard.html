@@ -12,7 +12,7 @@
                     <button ng-if="!article.published" class="btn btn-success" ng-click="publishArticle(article)"><i class="fa fa-rotate-90 fa-sign-in"></i> Publish</button>
                     <button ng-if="article.published" class="btn btn-warning" ng-click="unpublishArticle(article)"><i class="fa fa-rotate-270 fa-sign-out"></i> Unpublish</button>
                 </div>
-                <h4 class="list-group-item-heading">{{ article.title }}</h4>
+                <h4 class="list-group-item-heading"><a href="/blog/{{ article.slug }}">{{ article.title }}</a></h4>
                 <p class="list-group-item-text text-muted">{{ article.subtitle }}</p>
             </li>
         </ul>

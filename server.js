@@ -36,6 +36,7 @@ var aboutRouter = require('./server/routes/about');
 var adminRouter = require('./server/routes/admin');
 var blogRouter = require('./server/routes/blog');
 var contactRouter = require('./server/routes/contact');
+var uploadRouter = require('./server/routes/upload');
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -65,12 +66,14 @@ localAuth.initialize(app);
 
 // Setup static serving
 app.use(express.static(path.resolve('./client')));
+app.use('/uploads', express.static(path.resolve('./uploads')));
 
 // Set up our application routes
 app.use('/about', aboutRouter);
 app.use('/admin', adminRouter);
 app.use('/blog', blogRouter);
 app.use('/contact', contactRouter);
+app.use('/upload', uploadRouter);
 
 // Serve index.html
 app.get('/', routeUtils.serveIndex);

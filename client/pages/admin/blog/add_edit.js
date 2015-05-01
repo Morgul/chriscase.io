@@ -4,9 +4,31 @@
 // @module add_edit.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function AddEditArticleController($scope, $routeParams, $location, authSvc, articleSvc)
+function AddEditArticleController($scope, $routeParams, $location, FileUploader, authSvc, articleSvc)
 {
     $scope.article = {};
+
+    // Setup file uploader
+    $scope.uploader = new FileUploader({
+        url: '/upload',
+        autoUpload: true,
+        removeAfterUpload: true,
+        onCompleteItem: function(item, response, status, headers)
+        {
+            var imageMarkdown = "![Image: '" + response.originalName + "'](" + response.url + " \"" + response.originalName + "\")";
+            $scope.editor.insert(imageMarkdown);
+        }
+    });
+
+    // Filter to just images
+    $scope.uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item)
+        {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
 
     authSvc.initialized
         .then(function()
@@ -28,6 +50,11 @@ function AddEditArticleController($scope, $routeParams, $location, authSvc, arti
     // -----------------------------------------------------------------------------------------------------------------
     // Functions
     // -----------------------------------------------------------------------------------------------------------------
+
+    $scope.aceOnLoad = function(editor)
+    {
+        $scope.editor = editor;
+    }; // end aceOnLoad
 
     $scope.publish = function()
     {
@@ -81,6 +108,7 @@ angular.module('chriscaseio.controllers').controller('AddEditArticleController',
     '$scope',
     '$routeParams',
     '$location',
+    'FileUploader',
     'AuthService',
     'ArticleService',
     AddEditArticleController
