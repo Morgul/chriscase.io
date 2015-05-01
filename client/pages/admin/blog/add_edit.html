@@ -23,13 +23,13 @@
             <!--textarea id="content" class="form-control" ng-model="article.content" rows="20"></textarea-->
         </div>
         <div class="btn-toolbar">
-            <button ng-if="article.slug" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</button>
             <div class="btn-group pull-right">
                 <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i> Save</button>
                 <button ng-if="!article.published" class="btn btn-success" ng-click="publish()"><i class="fa fa-rotate-90 fa-sign-in"></i> Publish</button>
                 <button ng-if="article.published" class="btn btn-warning" ng-click="unpublish()"><i class="fa fa-rotate-270 fa-sign-out"></i> Unpublish</button>
                 <button class="btn btn-default" ng-click="cancel()"><i class="fa fa-undo"></i> Cancel</button>
             </div>
+            <button ng-if="article.slug" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</button>
         </div>
     </form>
 </div>
