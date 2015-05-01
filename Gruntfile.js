@@ -22,7 +22,7 @@ module.exports = function(grunt)
         },
         watch: {
             less: {
-                files: ['<%= project.less %>'],
+                files: ['client/**/*.less'],
                 tasks: ['less'],
                 options: {
                     atBegin: true
