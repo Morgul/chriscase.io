@@ -21,7 +21,8 @@
     "angular-truncate": "*",
     "highlightjs": "~8.4.0",
     "tomorrow": "https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/tomorrow.css",
-    "angular-utils-disqus": "~0.1.0"
+    "angular-utils-disqus": "~0.1.0",
+    "angular-ui-ace": "bower"
   },
   "resolutions": {
     "angular": "~1.3.11"

@@ -8,6 +8,7 @@ angular.module('chriscaseio', [
         'ngRoute',
 
         'lodash',
+        'ui.ace',
         'ui.bootstrap',
         'truncate',
         'angularUtils.directives.dirDisqus',
