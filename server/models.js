@@ -5,11 +5,11 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 var path = require('path');
-var jbase = require('jbase');
+var trivialdb = require('trivialdb');
 
 //----------------------------------------------------------------------------------------------------------------------
 
-var db = { errors: jbase.errors };
+var db = { errors: trivialdb.errors };
 var rootPath = path.join(__dirname, 'db');
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ function slugify(article)
 // Models
 //----------------------------------------------------------------------------------------------------------------------
 
-db.Page = jbase.defineModel('pages', {
+db.Page = trivialdb.defineModel('pages', {
     title: { type: String, required: true },
     url: String,
     content: String,
@@ -36,7 +36,7 @@ db.Page = jbase.defineModel('pages', {
     updated: { type: Date, default: Date.now() }
 }, { rootPath: rootPath, pk: 'url' });
 
-db.Article = jbase.defineModel('articles', {
+db.Article = trivialdb.defineModel('articles', {
     title: { type: String, required: true },
     subtitle: String,
     slug: String,
@@ -47,7 +47,7 @@ db.Article = jbase.defineModel('articles', {
     updated: { type: Date, default: Date.now() }
 }, { rootPath: rootPath, pk: 'slug', idFunc: slugify });
 
-db.User = jbase.defineModel('users', {
+db.User = trivialdb.defineModel('users', {
     username: String,
     tagline: String,
     email: String,
