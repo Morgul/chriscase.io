@@ -23,10 +23,20 @@ module.exports = function(grunt)
         watch: {
             less: {
                 files: ['client/**/*.less'],
-                tasks: ['less'],
+                tasks: ['less', 'autoprefixer'],
                 options: {
                     atBegin: true
                 }
+            }
+        },
+        autoprefixer: {
+            main: {
+                options: {
+                    browsers: ['last 2 versions', 'ie 8', 'ie 9'],
+                    map: true
+                },
+                src: 'client/css/chriscaseio.min.css',
+                dest: 'client/css/chriscaseio.min.css'
             }
         }
     });
@@ -34,9 +44,10 @@ module.exports = function(grunt)
     // Grunt Tasks.
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     // Setup the build task.
-    grunt.registerTask('build', ['less']);
+    grunt.registerTask('build', ['less', 'autoprefixer']);
 }; // module.exports
 
 // ---------------------------------------------------------------------------------------------------------------------
