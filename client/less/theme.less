@@ -18,6 +18,11 @@ body {
 
 .navbar {
     font-size: 21px;
+    min-height: 50px;
+
+    .navbar-toggle {
+        margin-top: 8px;
+    }
 
     .navbar-brand {
         padding-top: 12px;
@@ -107,17 +112,15 @@ h1, h2 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-// Google Theming
+// Misc
 //----------------------------------------------------------------------------------------------------------------------
 
-@google-red: #DD4B39;
+.label {
+    text-transform: lowercase;
 
-.text-google {
-    color: @google-red;
-}
-
-.btn-google {
-    .button-variant(#fff; @google-red; darken(@google-red, 5%));
+    & + & {
+        margin-left: 8px;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
