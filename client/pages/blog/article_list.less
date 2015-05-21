@@ -4,6 +4,21 @@
 
 #article-list
 {
+    h1, h2, h3, h4, h5, h6 {
+        display: block;
+
+        &:after {
+            content: "";
+            background-color: transparent;
+            height: 0;
+            display: none;
+        }
+
+        & > small {
+            font-family: sofia_prolight, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    }
+
     .article-list {
         padding-left: 10px;
         padding-right: 10px;

@@ -1,44 +1,50 @@
-<div id="home" class="container">
-    <h2>About this Site</h2>
-    <p>
-        This site serves a dual purpose. First, it gives me a site where I can put up some of my personal ramblings.
-        Second, (and arguably more importantly) the site itself serves as an example of my skill. It's an
-        <a href="https://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap 3</a>, and
-        <a href="https://nodejs.org/">Node.js</a> website. On the server side, it features RESTful endpoints (powered by
-        <a href="http://expressjs.com/">Express</a>), and an in-process database I've written and maintain, called
-        <a href="https://www.npmjs.com/package/trivialdb">trivialdb</a>.
-    </p>
-    <p>
-        If you're curious, I more than welcome an inspection of the source code. Check out the project on
-        <a href="https://github.com/Morgul/chriscase.io">GitHub</a>. Feel free to commit any fixes you find, or to use the
-        code in your own project; I've licensed it as <a href="http://en.wikipedia.org/wiki/MIT_License">MIT</a>, which
-        should let you do nearly anything you might want to with the code.
-    </p>
+<div id="home">
+    <div class="container">
+        <h2>About this Site</h2>
+        <p>
+            This site serves a dual purpose. First, it gives me a site where I can put up some of my personal ramblings.
+            Second, (and arguably more importantly) the site itself serves as an example of my skill. It's an
+            <a href="https://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap 3</a>, and
+            <a href="https://nodejs.org/">Node.js</a> website. On the server side, it features RESTful endpoints (powered by
+            <a href="http://expressjs.com/">Express</a>), and an in-process database I've written and maintain, called
+            <a href="https://www.npmjs.com/package/trivialdb">trivialdb</a>.
+        </p>
+        <p>
+            If you're curious, I more than welcome an inspection of the source code. Check out the project on
+            <a href="https://github.com/Morgul/chriscase.io">GitHub</a>. Feel free to commit any fixes you find, or to use the
+            code in your own project; I've licensed it as <a href="http://en.wikipedia.org/wiki/MIT_License">MIT</a>, which
+            should let you do nearly anything you might want to with the code.
+        </p>
+    </div>
 
-    <h2>Activity</h2>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fa fa-file-text-o"></i> Recent Articles</h4>
+    <div class="activity">
+        <div class="container">
+            <h2>Activity</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-file-text-o"></i> Recent Articles</h4>
+                        </div>
+                        <div ng-if="articles && articles.length > 0"  class="list-group">
+                            <a href="/blog/{{ article.slug }}" class="list-group-item" ng-repeat="article in articles">
+                                <div class="pull-right"><small>{{ article.created | fuzzydate }}</small></div>
+                                <h4 class="list-group-item-heading">
+                                    {{ article.title }}
+                                    <br>
+                                    <small>{{ article.subtitle }}</small>
+                                </h4>
+                            </a>
+                        </div>
+                        <div ng-if="!articles || articles.length == 0"  class="panel-body">
+                            <h4 class="text-center">No recent articles</h4>
+                        </div>
+                    </div>
                 </div>
-                <div ng-if="articles && articles.length > 0"  class="list-group">
-                    <a href="/blog/{{ article.slug }}" class="list-group-item" ng-repeat="article in articles">
-                        <div class="pull-right"><small>{{ article.created | fuzzydate }}</small></div>
-                        <h4 class="list-group-item-heading">
-                            {{ article.title }}
-                            <br>
-                            <small>{{ article.subtitle }}</small>
-                        </h4>
-                    </a>
-                </div>
-                <div ng-if="!articles || articles.length == 0"  class="panel-body">
-                    <h4 class="text-center">No recent articles</h4>
+                <div class="col-sm-6">
+                    <github-recent></github-recent>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <github-recent></github-recent>
         </div>
     </div>
 </div>
