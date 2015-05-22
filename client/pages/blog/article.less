@@ -30,8 +30,13 @@
             background-color: #eee;
             border: 1px solid #ddd;
             padding: 5px;
-            max-width: 100%;
+            max-width: 50%;
             z-index: 300;
+
+            @media(max-width: 767px)
+            {
+                max-width: 100%;
+            }
         }
     }
 }

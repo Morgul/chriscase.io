@@ -17,9 +17,20 @@ body {
         bottom: 0;
         left: 0;
         right: 0;
-        background: url('/images/bgimage.png') no-repeat center center fixed;
+
         pointer-events: none;
         z-index: 200;
+
+        // The PNG fallback for browsers without SVG support
+        background: url('/images/bgimage.png') center center no-repeat;
+
+        // We put a transparent linear gradient on to force browsers who don't understand/support that to ignore this
+        // rule. Generally speaking, browsers that have linear gradient support also have SVG support. This keeps our
+        // SVG image from breaking on older browsers, and the browser still only requests one image.
+        background-image: linear-gradient(transparent, transparent), url('/images/bgimage.svg');
+
+        // We want to cover the entire element
+        background-size: cover;
     }
 }
 
@@ -101,6 +112,7 @@ h1, h2 {
 
     &.panel-default {
         border-color: transparent;
+        opacity: 0.8;
 
         .panel-heading {
             background-color: transparent;
