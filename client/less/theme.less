@@ -10,7 +10,19 @@
 
 body {
     padding-top: 60px;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url('/images/bgimage.png') no-repeat center center fixed;
+        pointer-events: none;
+        z-index: 200;
+    }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
 // Navbar
@@ -76,6 +88,8 @@ h1, h2 {
 .panel {
     background-color: #fff;
     padding: 0 10px 0 10px;
+    position: relative;
+    z-index: 100;
 
     &.panel-default {
         border-color: transparent;
@@ -114,6 +128,11 @@ h1, h2 {
 //----------------------------------------------------------------------------------------------------------------------
 // Misc
 //----------------------------------------------------------------------------------------------------------------------
+
+input {
+    position: relative;
+    z-index: 9000;
+}
 
 .label {
     text-transform: lowercase;
