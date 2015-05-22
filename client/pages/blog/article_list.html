@@ -11,8 +11,13 @@
                 </div>
                 <h2>
                     <a href="/blog/{{ article.slug }}">{{ article.title }}</a>
-                    <small>{{ article.subtitle }}</small>
                 </h2>
+                <div class="text-muted sub-title clearfix">
+                    <div class="pull-right">
+                        <span class="label label-primary" ng-repeat="tag in article.tags">{{ tag }}</span>
+                    </div>
+                    {{ article.subtitle }}
+                </div>
             </header>
 
             <hr>

@@ -42,6 +42,7 @@ db.Article = trivialdb.defineModel('articles', {
     slug: String,
     content: String,
     author: String,
+    tags: { type: Array, default: [] },
     published: { type: Boolean, default: false },
     created: { type: Date, default: Date.now() },
     updated: { type: Date, default: Date.now() }

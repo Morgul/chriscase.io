@@ -9,6 +9,7 @@ function ArticleController($scope, $routeParams, articleSvc)
     articleSvc.get($routeParams.slug)
         .then(function(article)
         {
+            console.log('article:', article);
             $scope.article = article;
         });
 } // end ArticleController

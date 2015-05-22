@@ -2,11 +2,18 @@
     <h1>
         {{ article.title }}
     </h1>
-    <div class="text-muted sub-title">{{ article.subtitle }}</div>
+    <div class="text-muted sub-title clearfix">
+        <div class="pull-right">
+            <span class="label label-primary" ng-repeat="tag in article.tags">{{ tag }}</span>
+        </div>
+        {{ article.subtitle }}
+    </div>
 
     <!-- Byline -->
     <hr>
-    <span class="pull-right">{{ article.created | date:'short' }}</span>
+    <div class="pull-right">
+        <div>{{ article.created | date:'short' }}</div>
+    </div>
     by <a href="/about">Chris Case</a>
     <hr>
 
