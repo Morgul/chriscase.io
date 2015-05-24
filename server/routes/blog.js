@@ -91,7 +91,14 @@ router.get('/*', function(req, resp)
         models.Article.get(slug)
             .then(function(article)
             {
-                resp.json(article);
+                if(!article.published && !req.isAuthenticated())
+                {
+                    resp.status(404).end();
+                }
+                else
+                {
+                    resp.json(article);
+                } // end if
             })
             .catch(models.errors.DocumentNotFound, function()
             {

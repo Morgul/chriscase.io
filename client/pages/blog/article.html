@@ -1,27 +1,36 @@
 <div id="article" class="container">
-    <h1>
-        {{ article.title }}
-    </h1>
-    <div class="text-muted sub-title clearfix">
-        <div class="pull-right">
-            <span class="label label-primary" ng-repeat="tag in article.tags">{{ tag }}</span>
+    <!-- If we couldn't find the article -->
+    <div ng-if="!article" class="text-center">
+        <h3>The article you're looking for was not found.</h3>
+        <p>Please check the url and try again.</p>
+    </div>
+
+    <!-- If we found the article -->
+    <div ng-if="article">
+        <h1>
+            {{ article.title }}
+        </h1>
+        <div class="text-muted sub-title clearfix">
+            <div class="pull-right">
+                <span class="label label-primary" ng-repeat="tag in article.tags">{{ tag }}</span>
+            </div>
+            {{ article.subtitle }}
         </div>
-        {{ article.subtitle }}
-    </div>
 
-    <!-- Byline -->
-    <hr>
-    <div class="pull-right">
-        <div>{{ article.created | date:'short' }}</div>
-    </div>
-    by <a href="/about">Chris Case</a>
-    <hr>
+        <!-- Byline -->
+        <hr>
+        <div class="pull-right">
+            <div>{{ article.created | date:'short' }}</div>
+        </div>
+        by <a href="/about">Chris Case</a>
+        <hr>
 
-    <!-- Body -->
-    <markdown class="content" src="article.content"></markdown>
-    <hr>
-    <dir-disqus disqus-shortname="chriscaseio"
-                disqus-url="http://chriscase.io"
-                disqus-identifier="{{ article.slug }}">
-    </dir-disqus>
+        <!-- Body -->
+        <markdown class="content" src="article.content"></markdown>
+        <hr>
+        <dir-disqus disqus-shortname="chriscaseio"
+                    disqus-url="http://chriscase.io"
+                    disqus-identifier="{{ article.slug }}">
+        </dir-disqus>
+    </div>
 </div>
