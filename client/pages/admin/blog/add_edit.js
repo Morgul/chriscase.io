@@ -65,8 +65,9 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         $scope.article.published = true;
 
         articleSvc.save($scope.article)
-            .then(function()
+            .then(function(article)
             {
+                $scope.article = article;
                 ngToast.create("Post published.");
             });
     }; // end publish
@@ -76,8 +77,9 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
         $scope.article.published = false;
 
         articleSvc.save($scope.article)
-            .then(function()
+            .then(function(article)
             {
+                $scope.article = article;
                 ngToast.create("Post unpublished.");
             });
     }; // end unpublish
@@ -85,8 +87,9 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
     $scope.save = function()
     {
         articleSvc.save($scope.article)
-            .then(function()
+            .then(function(article)
             {
+                $scope.article = article;
                 ngToast.create("Post saved.");
             });
     }; // end save
@@ -108,7 +111,7 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
 
     $scope.view = function()
     {
-        $location.path('/blog/' + $routeParams.slug);
+        $location.path('/blog/' + $scope.article.slug);
     }; // end cancel
 } // end AddEditArticleController
 
