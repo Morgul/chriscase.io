@@ -105,6 +105,11 @@ function AddEditArticleController($scope, $routeParams, $location, FileUploader,
     {
         $location.path('/admin');
     }; // end cancel
+
+    $scope.view = function()
+    {
+        $location.path('/blog/' + $routeParams.slug);
+    }; // end cancel
 } // end AddEditArticleController
 
 // ---------------------------------------------------------------------------------------------------------------------
